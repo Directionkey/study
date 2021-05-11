@@ -22,3 +22,11 @@ exports.cloneArrayByArrayFilter = (arr) => {
 exports.cloneArrayByObjectAssign = (arr) => {
   return Object.assign([], arr);
 };
+
+exports.cloneArrayByArrayConcat = (arr, newArr) => {
+  return [].concat(arr);
+};
+
+exports.cloneArrayByJSON = (arr) => {
+  return JSON.parse(JSON.stringify(arr));
+};

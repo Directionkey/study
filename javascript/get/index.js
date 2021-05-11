@@ -9,20 +9,33 @@
 // ['val to select', 1, 'test']
 
 const obj = {
-  selector: { to: { val: "val to select" } },
-  user: { name: "xiaohong" },
-  target: [1, 2, { a: "test" }],
+  selector: { to: { val: 'val to select' } },
+  user: { name: 'xiaohong' },
+  target: [1, 2, { a: 'test' }],
 };
 
 function get(from, ...selectors) {
   const r = selectors.map((s) => {
     return s
-      .replace(/\[(\w+)\]/g, ".$1")
-      .split(".")
+      .replace(/\[(\w+)\]/g, '.$1')
+      .split('.')
       .reduce((prev, cur) => {
         return prev && prev[cur];
       }, from);
   });
+  console.log(r);
 }
+get(obj, 'selector.to.val', 'user.name', 'target[2].a');
 
-get(obj, "selector.to.val", "user.name", "target[0]", "target[2].a");
+// function get(from, ...selectors) {
+//   const r = selectors.map((s) => {
+//     return s
+//       .replace(/\[(\w+)\]/g, '.$1')
+//       .split('.')
+//       .reduce((prev, cur) => {
+//         return prev && prev[cur];
+//       }, from);
+//   });
+// }
+
+// get(obj, 'selector.to.val', 'user.name', 'target[0]', 'target[2].a');

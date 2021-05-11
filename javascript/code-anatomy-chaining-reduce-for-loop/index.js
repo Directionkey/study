@@ -4,7 +4,7 @@
 // output
 // [ '~/cool_app/foo.txt', '~/cool_app/.bar', '~/cool_app/baz.foo']
 
-const files = ["foo.txt ", ".bar", "   ", "baz.foo"];
+const files = ['foo.txt ', '.bar', '   ', 'baz.foo'];
 
 // loops
 function forLoops() {
@@ -30,7 +30,7 @@ function reduceWay() {
       result.push(filePath);
     }
     return result;
-  }, [])
+  }, []);
 
   console.log(filePaths);
 }
