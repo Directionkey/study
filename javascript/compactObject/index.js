@@ -15,8 +15,11 @@
 // output
 // { c: true, e: 1, g: 'a', h: [ true, 1, 'a' ], i: { l: 'a' } }
 
-function compactObject(data) {
-  // const data = Array.isArray(val) ? val.filter(Boolean) : val;
+function compactObject(val) {
+  //array.filter((item) => {return Boolean(item)}
+  // 去除数组中为“假”的元素 0、undefined、null、NaN、''、false
+
+  const data = Array.isArray(val) ? val.filter(Boolean) : val;
   return Object.keys(data).reduce(
     (acc, key) => {
       const value = data[key];
@@ -27,6 +30,18 @@ function compactObject(data) {
     },
     Array.isArray(data) ? [] : {},
   );
+
+  // const data = Array.isArray(val) ? val.filter(Boolean) : val;
+  // return Object.keys(data).reduce(
+  //   (acc, key) => {
+  //     const value = data[key];
+  //     if (value) {
+  //       acc[key] = typeof value === 'object' ? compactObject(value) : value;
+  //     }
+  //     return acc;
+  //   },
+  //   Array.isArray(data) ? [] : {},
+  // );
 }
 
 module.exports = {
