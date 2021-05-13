@@ -8,11 +8,11 @@ const {
   duplicateByObjectkeys,
 } = require('./index.js');
 
-it('reduce', () => {
+it.only('reduce', () => {
   const arr = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
   const newArr = duplicateByReduce(arr);
 
-  console.log(newArr);
+  // console.log(newArr);
 });
 
 it('Array.from', () => {
@@ -50,7 +50,7 @@ it('Array.filter', () => {
   console.log(newArr);
 });
 
-it.only('Object.keys', () => {
+it('Object.keys', () => {
   const arr = [1, 2, 3, 3, 3, 5, 8, 8];
   const newArr = duplicateByObjectkeys(arr);
 
