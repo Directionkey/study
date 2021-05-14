@@ -5,3 +5,7 @@ exports.traverseObjectByKeys = (obj) => {
 exports.traverseObjectByValues = (obj) => {
   return Object.values(obj);
 };
+
+exports.traverseObjectByEntries = (obj) => {
+  return Object.entries(obj);
+};

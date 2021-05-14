@@ -1,4 +1,8 @@
-const { traverseObjectByKeys, traverseObjectByValues } = require('./index.js');
+const {
+  traverseObjectByKeys,
+  traverseObjectByValues,
+  traverseObjectByEntries,
+} = require('./index.js');
 
 it('forIn', () => {
   const obj = {
@@ -6,7 +10,6 @@ it('forIn', () => {
     name: 'zhangsan',
     age: 18,
   };
-  let a = traverseObjectByForIn();
   for (let key in obj) {
     console.log(`${obj}-${obj[key]}`);
   }
@@ -64,4 +67,14 @@ it.only('Object.getOwnPropertyNames', () => {
   let keys = traverseObjectByKeys(obj2);
   let values = traverseObjectByValues(obj2);
   console.log(keys, values);
+});
+
+it.only('Object.entries', () => {
+  const obj = {
+    id: 1,
+    name: 'zhangsan',
+    age: 18,
+  };
+  let result = traverseObjectByEntries(obj);
+  console.log(result);
 });
