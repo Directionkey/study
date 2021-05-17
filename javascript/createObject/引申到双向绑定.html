@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="rua" />
+    <span id="text"></span>
+  </body>
+  <script>
+    let obj = {};
+    Object.defineProperty(obj, 'name', {
+      get: function () {
+        console.log('调用get');
+        return 'waaaagh';
+      },
+      set: function (val) {
+        document.getElementById('rua').value = val;
+        document.getElementById('text').innerHTML = val;
+      },
+    });
+    // oninput和onkeyup相差不大，但onkeyup监听不到鼠标复制黏贴
+    document.getElementById('rua').oninput = function (e) {
+      obj.name = e.target.value;
+    };
+    console.log(obj.name); //调用get方法
+    obj.name = '123'; //调用set方法
+  </script>
+</html>
