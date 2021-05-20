@@ -59,14 +59,15 @@ it('Array.prototype.filter', () => {
   expect(arr).toEqual([1, 2, 3]);
 });
 
-it('Object.assign', () => {
-  const arr = [1, 2, 3];
+it.only('Object.assign', () => {
+  const arr = [1, 2, [3, 4]];
   const newArr = cloneArrayByObjectAssign(arr);
   newArr[0] = 0;
-
+  newArr[2][1] = 6;
+  //假如源值是一个对象的引用，它仅仅会复制其引用值
   expect(arr).not.toEqual(newArr);
-  expect(newArr).toEqual([0, 2, 3]);
-  expect(arr).toEqual([1, 2, 3]);
+  expect(newArr).toEqual([0, 2, [3, 6]]);
+  expect(arr).toEqual([1, 2, [3, 6]]);
 });
 
 it('Array.prototype.concat', () => {
