@@ -2,6 +2,7 @@ it('Object.assign(target, ...sources)', () => {
   // 复制一个对象
   // 因为 Object.assign()拷贝的是（可枚举）属性值
   // 假如源值是一个对象的引用，它仅仅会复制其引用值。
+  // 如果要复制的值是一个取值函数，那么将求值后再复制。
   const obj = { a: 1, b: { c: 0 } };
   const copyObj = Object.assign({}, obj);
   copyObj.a = 2;
@@ -98,3 +99,19 @@ it('Object.assign(target, ...sources)', () => {
 });
 
 //拷贝访问器
+
+//常用场景-为属性指定默认值
+it('Object.assign(target, ...sources)', () => {
+  //DEFAULTS对象是默认值，options对象是用户提供的参数
+  //最好都是简单类型,因为浅拷贝
+  const DEFAULTS = {
+    logLevel: 0,
+    outputFormat: 'html',
+  };
+
+  function processContent(options) {
+    options = Object.assign({}, DEFAULTS, options);
+    console.log(options);
+    // ...
+  }
+});
